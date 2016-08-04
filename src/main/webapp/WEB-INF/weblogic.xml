@@ -3,6 +3,7 @@
     <wls:container-descriptor>
         <wls:prefer-application-packages>
             <wls:package-name>org.slf4j</wls:package-name>
+            <wls:package-name>com.fasterxml.jackson</wls:package-name>
         </wls:prefer-application-packages>
     </wls:container-descriptor>
     <wls:context-root>sample-app</wls:context-root>

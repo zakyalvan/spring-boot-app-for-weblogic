@@ -6,7 +6,7 @@ Important things to note :
 
 1. Make sure ```org.springframework.boot:spring-boot-starter-tomcat``` dependency scope set to ```provided```, to prevent interference with servlet libraries come with Weblogic.
 
-2. Create Weblogic deployment descriptor ```weblogic.xml``` to configure logging with content
+2. Create Weblogic deployment descriptor ```weblogic.xml``` in ```src/main/webapp/WEB-INF``` directory. Following are example to configure logging library. If you prefer to use packaged libraries instead of libraries come with Weblogic (for example ```Jackson```), just add another ```<wls:package-name>package.name</wls:package-name>``` element inside ```<wls:prefer-application-packages>``` element.
 	```xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<wls:weblogic-web-app
@@ -37,7 +37,7 @@ Important things to note :
 	...
 	```
 
-4. Add ```<enforce-valid-basic-auth-credentials>false</enforce-valid-basic-auth-credentials>``` as the last element of ```</security-configuration>``` tag, so that user wont be prompted to authenticating theirself to application server when accessing application, as authentication managed internally inside the application.
+4. Add ```<enforce-valid-basic-auth-credentials>false</enforce-valid-basic-auth-credentials>``` as the last element of ```</security-configuration>``` tag on ```DOMAIN_DIRECTORY/config/condif.xml``` xml file, so that user wont be prompted to authenticating theirself against Weblogic server when accessing the application, as authentication managed internally by the application.
 
 5. JNDI resource with name, for example ```jdbc.SampleDatasource```, could be looked up using ```jdbc/SampleDatasource``` name in addition to lookup using original name.
 
